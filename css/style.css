@@ -4086,3 +4086,426 @@ body {
     }
 
 }
+
+
+
+/* ================================
+   FAQ SECTION
+================================ */
+
+.faq-section {
+    padding: 110px 8%;
+    background: #ffe600;
+    color: #080808;
+}
+
+.faq-section > h2 {
+    font-size: clamp(55px, 8vw, 100px);
+    line-height: .85;
+    letter-spacing: -5px;
+    margin: 20px 0 60px;
+}
+
+.faq-section > h2 span {
+    color: #ff4fd8;
+    -webkit-text-stroke: 2px #080808;
+}
+
+.faq-list {
+    max-width: 950px;
+    margin: auto;
+}
+
+.faq-item {
+    background: white;
+    border: 4px solid #080808;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 6px 6px 0 #080808;
+    overflow: hidden;
+}
+
+.faq-item summary {
+    cursor: pointer;
+    padding: 22px 25px;
+
+    font-size: 18px;
+    font-weight: 900;
+
+    list-style: none;
+    position: relative;
+    padding-right: 55px;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    content: "+";
+
+    position: absolute;
+    right: 22px;
+    top: 15px;
+
+    font-size: 30px;
+    font-weight: 900;
+
+    transition: transform .2s ease;
+}
+
+.faq-item[open] summary::after {
+    transform: rotate(45deg);
+}
+
+.faq-item p {
+    margin: 0;
+    padding: 0 25px 25px;
+
+    color: #555;
+    line-height: 1.7;
+}
+
+.faq-item[open] {
+    box-shadow: 8px 8px 0 #ff4fd8;
+}
+
+@media (max-width: 600px) {
+
+    .faq-section {
+        padding: 80px 20px;
+    }
+
+    .faq-section > h2 {
+        letter-spacing: -3px;
+    }
+
+    .faq-item summary {
+        padding: 18px 20px;
+        padding-right: 50px;
+        font-size: 16px;
+    }
+
+    .faq-item p {
+        padding: 0 20px 20px;
+    }
+
+}
+
+
+
+/* ================================
+   REVIEWS
+================================ */
+
+.reviews-section {
+    padding: 110px 8%;
+    background: #080808;
+    color: white;
+}
+
+.reviews-section > h2 {
+    font-size: clamp(55px, 8vw, 100px);
+    line-height: .85;
+    letter-spacing: -5px;
+    margin: 20px 0 60px;
+}
+
+.reviews-section > h2 span {
+    color: #00d4d6;
+    -webkit-text-stroke: 2px white;
+}
+
+.reviews-grid {
+    max-width: 1200px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.review-card {
+    padding: 30px;
+
+    background: white;
+    color: #080808;
+
+    border: 4px solid white;
+    border-radius: 16px;
+
+    box-shadow: 8px 8px 0 #ff4fd8;
+}
+
+.review-stars {
+    color: #ff4fd8;
+    font-size: 22px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.review-text {
+    line-height: 1.7;
+    color: #444;
+    min-height: 90px;
+}
+
+.review-author {
+    margin-top: 25px;
+    padding-top: 15px;
+
+    border-top: 2px solid #ddd;
+}
+
+.review-author strong {
+    display: block;
+    font-size: 14px;
+}
+
+.review-author span {
+    display: block;
+    margin-top: 4px;
+
+    color: #777;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+@media (max-width: 850px) {
+
+    .reviews-section {
+        padding: 80px 20px;
+    }
+
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* ================================
+   MOBILE ORDER BAR
+================================ */
+
+.mobile-order-bar {
+    display: none;
+}
+
+@media (max-width: 700px) {
+
+    .mobile-order-bar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        z-index: 2500;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 12px 15px;
+
+        background: #080808;
+        color: white;
+
+        border-top: 3px solid #ff4fd8;
+    }
+
+    .mobile-order-bar span {
+        font-size: 11px;
+        font-weight: 900;
+    }
+
+    .mobile-order-bar a {
+        padding: 10px 14px;
+
+        background: #ffe600;
+        color: #080808;
+
+        border: 2px solid #080808;
+        border-radius: 6px;
+
+        text-decoration: none;
+        font-size: 11px;
+        font-weight: 1000;
+    }
+
+    .footer {
+        padding-bottom: 90px;
+    }
+
+}
+
+/* Fix Order Form Text Color */
+
+.order-form-box {
+    color: #080808;
+}
+
+.order-form-box h2,
+.order-form-box label,
+.order-form-box p {
+    color: #080808;
+}
+
+.order-form-box input,
+.order-form-box textarea,
+.order-form-box select {
+    color: #080808;
+    background: #f7f7f7;
+}
+
+.order-form-box input::placeholder,
+.order-form-box textarea::placeholder {
+    color: #777;
+    opacity: 1;
+}
+
+
+/* ================================
+   PROMO POPUP
+================================ */
+
+.promo-popup {
+    position: fixed;
+    inset: 0;
+
+    z-index: 10000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease;
+}
+
+.promo-popup.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.promo-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, .82);
+
+    backdrop-filter: blur(5px);
+}
+
+.promo-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(500px, 90vw);
+
+    background: white;
+
+    padding: 10px;
+
+    border: 4px solid #080808;
+    border-radius: 18px;
+
+    box-shadow: 12px 12px 0 #ff4fd8;
+
+    animation: promoEnter .4s ease;
+}
+
+.promo-content img {
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    border-radius: 10px;
+}
+
+.promo-close {
+    position: absolute;
+
+    top: -18px;
+    right: -18px;
+
+    width: 45px;
+    height: 45px;
+
+    border: 3px solid #080808;
+    border-radius: 50%;
+
+    background: #ffe600;
+    color: #080808;
+
+    font-size: 28px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    z-index: 3;
+}
+
+.promo-order-btn {
+    display: block;
+
+    margin: 12px 0 0;
+
+    padding: 15px;
+
+    text-align: center;
+
+    background: #080808;
+    color: white;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-weight: 900;
+
+    transition: transform .2s ease;
+}
+
+.promo-order-btn:hover {
+    transform: translateY(-2px);
+}
+
+@keyframes promoEnter {
+
+    from {
+        opacity: 0;
+        transform: scale(.85) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .promo-content {
+        width: min(420px, 88vw);
+        box-shadow: 8px 8px 0 #ff4fd8;
+    }
+
+    .promo-close {
+        width: 40px;
+        height: 40px;
+
+        top: -15px;
+        right: -15px;
+    }
+
+}

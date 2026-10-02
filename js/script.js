@@ -313,3 +313,31 @@ SAY IT. DO IT. SCORE IT.`;
     });
 
 }
+
+
+/* ================================
+   PROMO POPUP — SHOW ONCE
+================================ */
+
+const promoPopup = document.getElementById("promoPopup");
+const promoClose = document.getElementById("promoClose");
+
+if (promoPopup && promoClose) {
+
+    const promoSeen = localStorage.getItem("cardiebuddiePromoSeen");
+
+    if (promoSeen === "true") {
+        promoPopup.classList.add("hidden");
+    }
+
+    function closePromo() {
+        promoPopup.classList.add("hidden");
+        localStorage.setItem("cardiebuddiePromoSeen", "true");
+    }
+
+    promoClose.addEventListener("click", closePromo);
+
+    promoPopup
+        .querySelector(".promo-overlay")
+        .addEventListener("click", closePromo);
+}
