@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Track Order | Cardiebuddie</title>
+
+    <meta name="description"
+          content="Track your Cardiebuddie TRUTH & DARE order.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        <a href="index.html">
+            <img src="images/logo.png" alt="Cardiebuddie">
+        </a>
+    </div>
+
+    <ul class="nav-links">
+
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="rules.html">HOW TO PLAY</a></li>
+        <li><a href="cards.html">CARDS</a></li>
+        <li><a href="gallery.html">GALLERY</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+
+        <li>
+            <a href="order.html" class="nav-order">
+                ORDER NOW
+            </a>
+        </li>
+
+    </ul>
+
+    <button class="menu-toggle" id="menuToggle">☰</button>
+
+</nav>
+
+
+<section class="track-page">
+
+    <div class="track-header">
+
+        <div class="section-label">ORDER TRACKING</div>
+
+        <h1>
+            WHERE'S<br>
+            <span>MY ORDER?</span>
+        </h1>
+
+        <p>
+            Enter your Order ID and phone number to check
+            your latest order status.
+        </p>
+
+    </div>
+
+
+    <div class="track-box">
+
+        <form id="trackForm">
+
+            <div class="form-group">
+
+                <label for="trackOrderId">
+                    ORDER ID
+                </label>
+
+                <input
+                    type="text"
+                    id="trackOrderId"
+                    placeholder="e.g. CB-0001"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="trackPhone">
+                    PHONE NUMBER
+                </label>
+
+                <input
+                    type="tel"
+                    id="trackPhone"
+                    placeholder="01XXXXXXXXX"
+                    required>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="track-submit">
+
+                TRACK ORDER →
+
+            </button>
+
+        </form>
+
+
+        <div
+            id="trackResult"
+            class="track-result">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer class="footer">
+
+    <div class="footer-logo">
+        <img src="images/logo.png" alt="Cardiebuddie">
+    </div>
+
+    <p>SAY IT. DO IT. SCORE IT.</p>
+
+    <div class="footer-social">
+
+        <a href="https://www.facebook.com/Cardiebuddie"
+           target="_blank"
+           rel="noopener">
+            FACEBOOK
+        </a>
+
+        <a href="https://www.instagram.com/Cardiebuddie"
+           target="_blank"
+           rel="noopener">
+            INSTAGRAM
+        </a>
+
+    </div>
+
+    <p class="footer-copy">
+        © 2026 Cardiebuddie. All rights reserved.
+    </p>
+
+</footer>
+
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

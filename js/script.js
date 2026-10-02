@@ -265,50 +265,151 @@ window.addEventListener("load", function () {
 
 
 /* ================================
-   WHATSAPP ORDER
+   GOOGLE SHEET + WHATSAPP ORDER
 ================================ */
 
 const orderForm = document.getElementById("orderForm");
 
 if (orderForm) {
 
-    orderForm.addEventListener("submit", function (event) {
+    orderForm.addEventListener("submit", async function (event) {
 
         event.preventDefault();
 
         const name =
-            document.getElementById("name").value;
+            document.getElementById("name").value.trim();
 
         const phone =
-            document.getElementById("phone").value;
+            document.getElementById("phone").value.trim();
 
         const address =
-            document.getElementById("address").value;
+            document.getElementById("address").value.trim();
 
         const quantity =
             document.getElementById("quantity").value;
 
+        const couponElement =
+            document.getElementById("couponCode");
+
+        const couponCode =
+            couponElement
+                ? couponElement.value.trim()
+                : "";
+
+
+        /*
+         * CHANGE THESE
+         */
 
         const whatsappNumber = "8801601824990";
 
+        const googleScriptURL =
+            "https://script.google.com/macros/s/AKfycbw3fe0M5ZjkUcVIqOajdNo33Te2boTXxQQRy9MHpRqSLoeRHwRLs3kYSkuXQwUMcymS/exec";
 
-        const message =
+
+        /*
+         * PRODUCT PRICE
+         */
+
+        const productPrice = 0;
+
+        const orderValue =
+            productPrice * Number(quantity);
+
+
+        /*
+         * SEND TO GOOGLE SHEET
+         */
+
+        const orderData = {
+
+            name: name,
+            phone: phone,
+            address: address,
+            quantity: quantity,
+            orderValue: orderValue,
+            couponCode: couponCode
+
+        };
+
+
+        const submitButton =
+            orderForm.querySelector(".order-submit");
+
+        submitButton.disabled = true;
+
+        submitButton.textContent =
+            "PROCESSING...";
+
+
+        try {
+
+            const response = await fetch(
+                googleScriptURL,
+                {
+                    method: "POST",
+
+                    body: JSON.stringify(orderData)
+                }
+            );
+
+
+            const result =
+                await response.json();
+
+
+            if (!result.success) {
+
+                throw new Error(
+                    "Order could not be saved."
+                );
+
+            }
+
+
+            /*
+             * WHATSAPP MESSAGE
+             */
+
+            const message =
 `🎴 CARDIEBUDDIE ORDER
+
+Order No: ${result.orderNo}
 
 Name: ${name}
 Phone: ${phone}
 Address: ${address}
 Quantity: ${quantity}
+Order Value: ৳${orderValue}
 
-TRUTH & DARE
+Coupon Code: ${couponCode || "None"}
+
+Order Status: Pending
+
 SAY IT. DO IT. SCORE IT.`;
 
 
-        const whatsappURL =
-            `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            const whatsappURL =
+                `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
 
-        window.open(whatsappURL, "_blank");
+            window.location.href = whatsappURL;
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                "Something went wrong while placing your order. Please try again."
+            );
+
+            submitButton.disabled = false;
+
+            submitButton.textContent =
+                "ORDER VIA WHATSAPP →";
+
+        }
 
     });
 
@@ -340,4 +441,182 @@ if (promoPopup && promoClose) {
     promoPopup
         .querySelector(".promo-overlay")
         .addEventListener("click", closePromo);
+}
+
+
+
+/* ================================
+   ORDER TRACKING
+================================ */
+
+const trackForm =
+    document.getElementById("trackForm");
+
+
+if (trackForm) {
+
+    trackForm.addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const orderId =
+                document
+                    .getElementById("trackOrderId")
+                    .value
+                    .trim();
+
+
+            const phone =
+                document
+                    .getElementById("trackPhone")
+                    .value
+                    .trim();
+
+
+            const resultBox =
+                document.getElementById("trackResult");
+
+
+            resultBox.className =
+                "track-result loading";
+
+
+            resultBox.innerHTML =
+                "CHECKING ORDER...";
+
+
+            const googleScriptURL =
+                "https://script.google.com/macros/s/AKfycbyqIFcpr_djihag0dd7msidLLGkhN-y3r5srZ7mzHU02xnNnad_SqHnic4tYY2PaXh2/exec";
+
+
+            const trackData = {
+
+                action: "track",
+
+                orderId: orderId,
+
+                phone: phone
+
+            };
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        googleScriptURL,
+                        {
+
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "text/plain;charset=utf-8"
+                            },
+
+                            body:
+                                JSON.stringify(trackData)
+
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (!data.success) {
+
+                    resultBox.className =
+                        "track-result error";
+
+
+                    resultBox.innerHTML = `
+
+                        <strong>
+                            ORDER NOT FOUND
+                        </strong>
+
+                        <p>
+                            ${data.message}
+                        </p>
+
+                    `;
+
+                    return;
+
+                }
+
+
+                resultBox.className =
+                    "track-result success";
+
+
+                resultBox.innerHTML = `
+
+                    <div class="track-success-title">
+                        ORDER FOUND ✓
+                    </div>
+
+
+                    <div class="track-order-number">
+                        ${data.orderNo}
+                    </div>
+
+
+                    <div class="track-status">
+
+                        <span>STATUS</span>
+
+                        <strong>
+                            ${data.status}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="track-remarks">
+
+                        <span>REMARKS</span>
+
+                        <p>
+                            ${data.remarks || "No remarks yet."}
+                        </p>
+
+                    </div>
+
+                `;
+
+
+            } catch (error) {
+
+                console.error(
+                    "TRACK ORDER ERROR:",
+                    error
+                );
+
+
+                resultBox.className =
+                    "track-result error";
+
+
+                resultBox.innerHTML = `
+
+                    <strong>
+                        SOMETHING WENT WRONG
+                    </strong>
+
+                    <p>
+                        Please try again later.
+                    </p>
+
+                `;
+
+            }
+
+        });
+
 }
