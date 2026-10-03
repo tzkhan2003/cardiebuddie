@@ -4759,3 +4759,369 @@ body {
     }
 
 }
+
+
+/* =================================
+   CARDIEBUDDIE COMING SOON
+================================= */
+
+.coming-soon-page {
+    min-height: 100vh;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    background: #080808;
+
+    color: white;
+
+    position: relative;
+
+    font-family: inherit;
+}
+
+
+/* BACKGROUND SHAPES */
+
+.coming-shape {
+    position: absolute;
+
+    border: 4px solid #080808;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+.shape-one {
+    width: 280px;
+    height: 280px;
+
+    top: -120px;
+    left: -100px;
+
+    background: #ff4fd8;
+
+    border-radius: 50%;
+
+    transform: rotate(15deg);
+}
+
+.shape-two {
+    width: 220px;
+    height: 220px;
+
+    right: -80px;
+    top: 15%;
+
+    background: #00d4d6;
+
+    border-radius: 30px;
+
+    transform: rotate(25deg);
+}
+
+.shape-three {
+    width: 180px;
+    height: 180px;
+
+    bottom: -80px;
+    left: 12%;
+
+    background: #ffe600;
+
+    border-radius: 50%;
+
+    transform: rotate(-15deg);
+}
+
+
+/* MAIN */
+
+.coming-soon {
+    position: relative;
+
+    z-index: 2;
+
+    min-height: 100vh;
+
+    box-sizing: border-box;
+
+    padding: 60px 25px 80px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+/* LOGO */
+
+.coming-logo {
+    margin-bottom: 35px;
+}
+
+.coming-logo img {
+    width: 190px;
+
+    max-width: 60vw;
+
+    height: auto;
+
+    display: block;
+}
+
+
+/* LABEL */
+
+.coming-label {
+    display: inline-block;
+
+    padding: 10px 16px;
+
+    background: #ffe600;
+
+    color: #080808;
+
+    border: 3px solid #080808;
+
+    border-radius: 6px;
+
+    font-size: 12px;
+
+    font-weight: 1000;
+
+    letter-spacing: 1.5px;
+
+    transform: rotate(-2deg);
+
+    box-shadow: 5px 5px 0 #ff4fd8;
+
+    margin-bottom: 25px;
+}
+
+
+/* HEADING */
+
+.coming-soon h1 {
+    margin: 0;
+
+    font-size: clamp(55px, 10vw, 125px);
+
+    line-height: .82;
+
+    letter-spacing: -6px;
+
+    font-weight: 1000;
+}
+
+.coming-soon h1 span {
+    color: #ff4fd8;
+
+    -webkit-text-stroke: 2px white;
+}
+
+
+/* DESCRIPTION */
+
+.coming-description {
+    max-width: 550px;
+
+    margin: 30px auto 20px;
+
+    color: #bbb;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+}
+
+
+/* GAME INFO */
+
+.coming-game {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin: 10px 0 25px;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+}
+
+.coming-game .dot {
+    color: #00d4d6;
+
+    font-size: 20px;
+}
+
+
+/* TAGLINE */
+
+.coming-tagline {
+    font-size: 18px;
+
+    font-weight: 1000;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 35px;
+}
+
+.coming-tagline span {
+    color: #00d4d6;
+}
+
+
+/* ORDER */
+
+.coming-order {
+    display: inline-block;
+
+    padding: 16px 25px;
+
+    background: #ff4fd8;
+
+    color: #080808;
+
+    border: 3px solid #080808;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-weight: 1000;
+
+    box-shadow: 6px 6px 0 white;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.coming-order:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 9px 9px 0 white;
+}
+
+
+/* SOCIAL */
+
+.coming-social {
+    display: flex;
+
+    gap: 25px;
+
+    margin-top: 45px;
+}
+
+.coming-social a {
+    color: #aaa;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    transition: color .2s ease;
+}
+
+.coming-social a:hover {
+    color: #00d4d6;
+}
+
+
+/* FOOTER */
+
+.coming-footer {
+    position: absolute;
+
+    z-index: 3;
+
+    bottom: 20px;
+
+    left: 0;
+
+    right: 0;
+
+    text-align: center;
+
+    color: #555;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .coming-soon {
+        padding: 40px 20px 70px;
+    }
+
+    .coming-logo img {
+        width: 150px;
+    }
+
+    .coming-soon h1 {
+        letter-spacing: -3px;
+    }
+
+    .coming-description {
+        font-size: 16px;
+    }
+
+    .coming-game {
+        flex-direction: column;
+
+        gap: 5px;
+    }
+
+    .coming-game .dot {
+        display: none;
+    }
+
+    .coming-tagline {
+        font-size: 14px;
+
+        letter-spacing: 2px;
+    }
+
+    .shape-one {
+        width: 180px;
+        height: 180px;
+    }
+
+    .shape-two {
+        width: 130px;
+        height: 130px;
+    }
+
+    .shape-three {
+        width: 110px;
+        height: 110px;
+    }
+
+}
