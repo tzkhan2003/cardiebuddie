@@ -311,7 +311,7 @@ if (orderForm) {
          * PRODUCT PRICE
          */
 
-        const productPrice = 180;
+        const productPrice = 200;
 
         const orderValue =
             productPrice * Number(quantity);
